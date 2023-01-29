@@ -26,6 +26,4 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: gh-pages
-          build_dir: dist/weather-app
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          build_dir: dist
