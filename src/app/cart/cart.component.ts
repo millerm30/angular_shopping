@@ -30,6 +30,10 @@ export class CartComponent {
     this.checkoutForm.reset();
   }
 
+  removeItem(product: any): void {
+    this.cartService.deleteCartItem(product);
+  }
+
   calculateTotal(): number {
     let total: number = 0;
     this.items.forEach(item => {
