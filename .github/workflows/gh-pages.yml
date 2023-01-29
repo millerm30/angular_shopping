@@ -5,16 +5,23 @@ on:
       - master
 jobs:
   build:
-
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: All things angular
-      uses: AhsanAyaz/angular-deploy-gh-pages-actions@[6] ## replace by latest version without it you will see Expected format {org}/{repo}[/path]@ref. Actual 'AhsanAyaz/angular-deploy-gh-pages-actions',Input string was not in a correct format.
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Use Node 12.x
+      uses: actions/setup-node@v1
       with:
-        #github_access_token: ${{ secrets.ACCESS_TOKEN }} # see the Configuration section for how you can create secrets
-        build_configuration: staging # The build environment for the app. please look configurations in your angular.json
-        base_href: https://millerm30.github.io/angular_shopping/   # make sure this corresponds to https://<your_username>.github.io/<base_href>/
-        deploy_branch: gh-pages # The branch the action should deploy to.
-        angular_dist_build_folder: dist/ # The folder where your project is supposed to be after running ng build by the action.
+        node-version: '12.x'
+    - name: Install dependencies
+      run: npm ci
+    - name: Build
+      run: npm run build
+      - name: Deploy to GitHub Pages
+    uses: JamesIves/github-pages-deploy-action@releases/v3
+    with:
+      #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      BRANCH: gh-pages
+      FOLDER: dist/angular_shopping
