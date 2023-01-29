@@ -1,4 +1,4 @@
-name: CI / CD for Angular
+name: CI/CD for Angular
 on:
   push:
     branches: [ "master" ]
