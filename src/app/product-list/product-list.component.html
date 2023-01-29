@@ -2,18 +2,14 @@
 
 <div *ngFor="let product of products">
   <h3>
-    <a [title]="product.name + ' details'">
+    <a [title]="product.name + ' details'" class="text-[#1976d2] hover:text-opacity-80 cursor-pointer">
       {{ product.name }}
     </a>
   </h3>
-  <p *ngIf="product.description">
+  <p *ngIf="product.description" class="text-sm">
     Description: {{ product.description }}
   </p>
+  <button type="button" (click)="share()">
+    Share
+  </button>
 </div>
-
-
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
--->
