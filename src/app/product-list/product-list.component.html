@@ -2,7 +2,11 @@
 
 <div *ngFor="let product of products" class="flex flex-col py-6 gap-2">
   <h3>
-    <a [title]="product.name + ' details'" class="text-[#1976d2] hover:text-opacity-80 cursor-pointer">
+    <a 
+      [title]="product.name + ' details'"
+      [routerLink]="['/products', product.id]"
+      class="text-[#1976d2] hover:text-opacity-80 cursor-pointer"
+    >
       {{ product.name }}
     </a>
   </h3>

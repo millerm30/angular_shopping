@@ -8,20 +8,20 @@ export interface Product {
 export const products = [
   {
     id: 1,
-    name: 'Phone XL',
+    name: 'Google Pixel 7 - 128GB',
     price: 799,
-    description: 'A large phone with one of the best screens'
+    description: 'Great phone with one of the best cameras'
   },
   {
     id: 2,
-    name: 'Phone Mini',
-    price: 699,
-    description: 'A great phone with one of the best cameras'
+    name: 'Google Pixel 7 Pro - 256GB',
+    price: 999,
+    description: 'Great phone with the best camera'
   },
   {
     id: 3,
-    name: 'Phone Standard',
-    price: 299,
+    name: 'Google Pixel 6A - 128GB',
+    price: 399,
     description: ''
   }
 ];
