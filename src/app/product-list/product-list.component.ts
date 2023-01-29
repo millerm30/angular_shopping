@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-
 import { products } from '../products';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-list',
@@ -9,12 +9,13 @@ import { products } from '../products';
 })
 export class ProductListComponent {
   products = [...products];
+  constructor(private toastr: ToastrService) {}
 
   share() {
-    window.alert('The product has been shared!');
+    this.toastr.success('The product has been shared!');
   }
 
   onNotify() {
-    window.alert('You will be notified when the product goes on sale!');
+    this.toastr.info('You will be notified when the product goes on sale!');
   }
 }

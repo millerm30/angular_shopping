@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CartService } from '../cart.service';
 import { FormBuilder } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart',
@@ -18,16 +19,22 @@ export class CartComponent {
   constructor(
     private cartService: CartService,
     private formBuilder: FormBuilder,
+    private toastr: ToastrService
   ) {}
 
   goBack(): void {
     window.history.back();
   }
 
-  onSubmit(): void {
+  onSubmit() {
+    if (this.checkoutForm.value.name === '' || this.checkoutForm.value.address === '') {
+      this.toastr.error('Please fill in your name and address before submitting your order.');
+      return;
+    }
     this.items = this.cartService.clearCart();
     console.log('Your order has been submitted', this.checkoutForm.value);
     this.checkoutForm.reset();
+    this.toastr.success('Your order has been submitted!');
   }
 
   removeItem(product: any): void {

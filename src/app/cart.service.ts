@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Product } from './products';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class CartService {
   items: Product[] = [];
   private cartItemsSubject = new Subject<Product[]>();
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private toastr: ToastrService
   ) {
     const storedItems = localStorage.getItem('cartItems');
     this.items = storedItems ? JSON.parse(storedItems) : [];
@@ -33,6 +35,7 @@ export class CartService {
     }
     localStorage.setItem('cartItems', JSON.stringify(this.items));
     this.cartItemsSubject.next(this.items);
+    this.toastr.warning('Your product has been removed from the cart!');
   }
 
   getItems() {
