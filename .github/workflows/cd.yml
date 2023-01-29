@@ -1,0 +1,28 @@
+name: Continuous Deployment
+on:
+  push:
+    branches: ['**']
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - name: Install packages
+        run: yarn install
+      - name: Run tests
+        run: yarn test
+      - name: Build for GitHub pages
+        run: |
+          yarn build-gh-pages
+          cp dist/gh-actions-example/index.html dist/gh-actions-example/404.html
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: dist/gh-actions-example
