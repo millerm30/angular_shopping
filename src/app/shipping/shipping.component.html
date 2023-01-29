@@ -1,0 +1,12 @@
+<h3>Shipping Costs</h3>
+
+<div *ngFor="let shipping of shippingCost | async" class="flex justify-between bg-slate-200 my-2 w-48 p-2 rounded-lg">
+  <span>{{ shipping.type }}</span>
+  <span>{{ shipping.price | currency }}</span>
+</div>
+
+<div>
+  <button (click)="goBack()" class="bg-cyan-600 text-white rounded-lg p-1 w-16 hover:opacity-80">
+    Back
+  </button>
+</div>

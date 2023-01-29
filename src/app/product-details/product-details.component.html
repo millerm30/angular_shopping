@@ -11,5 +11,12 @@
   <p>
     {{ product.description }}
   </p>
-  <button (click)="goBack()" class="bg-cyan-600 text-white rounded-lg p-1 w-16 hover:opacity-80">Back</button>
+  <div class="flex justify-between">
+    <button (click)="goBack()" class="bg-cyan-600 text-white rounded-lg p-1 w-16 hover:opacity-80">
+      Back
+    </button>
+    <button (click)="addToCart(product)" class="bg-cyan-600 text-white rounded-lg p-1 w-24 hover:opacity-80">Add to
+      Cart
+    </button>
+  </div>
 </div>
