@@ -29,4 +29,12 @@ export class CartComponent {
     console.log('Your order has been submitted', this.checkoutForm.value);
     this.checkoutForm.reset();
   }
+
+  calculateTotal(): number {
+    let total: number = 0;
+    this.items.forEach(item => {
+      total += item.price;
+    });
+    return total;
+  }
 }
