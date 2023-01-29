@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Product } from './products';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   items: Product[] = [];
+  private cartItemsSubject = new Subject<Product[]>();
   constructor(
     private http: HttpClient
   ) {
@@ -21,6 +23,7 @@ export class CartService {
   addToCart(product: Product) {
     this.items.push(product);
     localStorage.setItem('cartItems', JSON.stringify(this.items));
+    this.cartItemsSubject.next(this.items);
   }
 
   deleteCartItem(product: Product) {
@@ -29,15 +32,21 @@ export class CartService {
       this.items.splice(index, 1);
     }
     localStorage.setItem('cartItems', JSON.stringify(this.items));
+    this.cartItemsSubject.next(this.items);
   }
 
   getItems() {
     return this.items;
   }
+
+  getCartItemsSubject() {
+    return this.cartItemsSubject;
+  }
   
   clearCart() {
     this.items = [];
     localStorage.removeItem('cartItems');
+    this.cartItemsSubject.next(this.items);
     return this.items;
   }
 }
