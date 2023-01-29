@@ -15,6 +15,17 @@
     </div>
   </div>
 </div>
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <div class="flex flex-col gap-4">
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name">
+  </div>
+  <div class="flex flex-col gap-4">
+    <label for="address">Address</label>
+    <input type="text" id="address" formControlName="address">
+  </div>
+  <button type="submit" class="bg-cyan-600 text-white rounded-lg p-1 w-24 hover:opacity-80">Purchase</button>
+</form>
 <div class="my-6">
   <button (click)="goBack()" class="bg-cyan-600 text-white rounded-lg p-1 w-16 hover:opacity-80">
     Back

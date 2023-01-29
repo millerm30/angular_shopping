@@ -21,7 +21,7 @@ export class ProductDetailsComponent {
     this.product = products.find(product => product.id === productIdFromRoute);
   }
 
-  goBack() {
+  goBack(): void {
     window.history.back();
   }
 

@@ -17,7 +17,7 @@ export class ShippingComponent {
     this.shippingCost = this.cartService.getShippingPrices();
   }
 
-  goBack = () => {
+  goBack(): void {
     window.history.back();
   }
 }
