@@ -25,7 +25,7 @@ export const products = [
     id: 3,
     name: 'Google Pixel 6A - 128GB',
     price: 399,
-    description: '',
+    description: 'Last year\'s model with a decent camera',
     image: '../assets/pixel.png'
   }
 ];
