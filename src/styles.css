@@ -13,3 +13,7 @@
 router-outlet + *  {
   padding: 0 16px;
 }
+
+.main {
+  min-height: calc(100vh - 72px - 56px);
+}
