@@ -1,6 +1,6 @@
-<h2>Products</h2>
+<h2 class="text-xl pb-2">Products</h2>
 
-<div *ngFor="let product of products">
+<div *ngFor="let product of products" class="flex flex-col py-6 gap-2">
   <h3>
     <a [title]="product.name + ' details'" class="text-[#1976d2] hover:text-opacity-80 cursor-pointer">
       {{ product.name }}
@@ -9,7 +9,7 @@
   <p *ngIf="product.description" class="text-sm">
     Description: {{ product.description }}
   </p>
-  <button type="button" (click)="share()">
+  <button type="button" (click)="share()" class="bg-cyan-600 text-white rounded-lg p-1 w-16 hover:opacity-80">
     Share
   </button>
 </div>
