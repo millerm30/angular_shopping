@@ -18,7 +18,6 @@ jobs:
       - name: Build for GitHub pages
         run: |
           yarn build-gh-pages
-          cp dist/gh-actions-example/index.html dist/gh-actions-example/404.html
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
