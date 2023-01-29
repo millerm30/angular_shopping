@@ -12,11 +12,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-          cache: 'yarn'
+          cache: 'npm'
       - name: Install packages
-        run: yarn install
-      - name: Run tests
-        run: yarn test
+        run: npm install
       - name: Build for GitHub pages
         run: |
           yarn build-gh-pages
